@@ -1,0 +1,43 @@
+# Archivo de configuración para el proyecto WackoPicko
+# Uso de skims (machine) Standalone de Fluid Attacks.
+
+# Documentación (actualizada 26-may-2024):
+# https://help.fluidattacks.com/portal/en/kb/articles/run-scans-locally-or-in-your-ci-cd
+# https://help.fluidattacks.com/portal/en/kb/articles/configure-the-tests-by-the-standalone-scanner
+# ----------------------------------------------------------
+
+# Especificar el espacio de nombres para el escaneo.
+namespace: wackopicko
+
+# Configurar los ajustes de salida
+# (OJO: por ahora sólo puede configurarse un tipo de salida: en pantalla o en archivo csv/sarif)
+# Se configura la salida en archivo y el pipeline persiste el archivo de salida como un artefacto en Github Actions.
+output:
+  file_path: ./results.csv
+  format: CSV
+
+# Configurar el directorio de trabajo para el escaneo.
+working_dir: .
+
+# Indicar el idioma para las notificaciones realizadas por el escaneo (ES o EN).
+language: ES
+
+
+# Configura los ajustes de SAST (Pruebas de Seguridad de Aplicaciones Estáticas)
+sast:
+  include:
+    - .
+  exclude:
+    - glob(**/node_modules/**)
+    - glob(**/test/**)
+
+# Configura los ajustes de SCA (Análisis de Composición de Software)
+sca:
+  include:
+    - .
+  exclude:
+    - glob(**/test/**)
+
+# Habilita el modo estricto para romper el bluidl (código de salida 1)
+# cuando se detecta alguna vulnerbailidad o problema.
+strict: true
