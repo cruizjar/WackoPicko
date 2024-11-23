@@ -4,7 +4,7 @@
 # Documentación (actualizada 26-may-2024):
 # https://help.fluidattacks.com/portal/en/kb/articles/run-scans-locally-or-in-your-ci-cd
 # https://help.fluidattacks.com/portal/en/kb/articles/configure-the-tests-by-the-standalone-scanner
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 
 # Especificar el espacio de nombres para el escaneo.
 namespace: wackopicko
